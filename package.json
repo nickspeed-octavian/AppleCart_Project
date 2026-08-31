@@ -1,0 +1,27 @@
+{
+  "name": "applecart_project",
+  "version": "1.0.0",
+  "description": "e-commerce UI with HTML, SCSS, Vite and JavaScript",
+  "homepage": "https://github.com/nickspeed-octavian/AppleCart_Project#readme",
+  "bugs": {
+    "url": "https://github.com/nickspeed-octavian/AppleCart_Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickspeed-octavian/AppleCart_Project.git"
+  },
+  "license": "MIT",
+  "author": "Nicolas Dowdy",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "sass": "^1.103.1",
+    "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1"
+  }
+}
