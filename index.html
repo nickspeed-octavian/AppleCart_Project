@@ -31,5 +31,29 @@
             </div>
         </div>
     </header>
+
+    <!-- Store Section -->
+     <main class="store">
+        <section class="store__product-list">
+
+        </section>
+     </main>
+
+     <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; <span id="year"></span> Apple Store. All rights reserved</p>
+      </footer>
+
+      <!-- Javascript Files -->
+       <script type="module" src="/src/data/products.js"></script>
+       <script type="module" src="/src/js/script.js"></script>
+       <script>
+            document.addEventListener("DOMContentLoaded",function() {
+                const yearSpan=document.getElementById("year");
+                yearSpan.textContent = new Date().getFullYear();
+            });
+       </script>
+       <div class="toast-container"></div>
+
 </body>
 </html>
