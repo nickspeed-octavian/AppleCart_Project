@@ -7,9 +7,9 @@ body {
     box-sizing: border-box;
 }
 
-@import 'cart';
-@import 'checkout';
-@import 'footer';
-@import 'header';
-@import 'store';
-@import 'toast';
+@use 'cart';
+@use 'checkout';
+@use 'footer';
+@use 'header';
+@use 'store';
+@use 'toast';
