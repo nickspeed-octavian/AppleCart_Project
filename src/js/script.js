@@ -1,5 +1,7 @@
 import { products } from '../data/products.js';
 document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Saves cart to user's browser
+    
     const checkoutCountElement = document.querySelector('.header__checkout-count');
     const cartPreviewElement = document.querySelector(".header__cart-preview");
     const cartItemsElement = document.querySelector(".header__cart-items");
@@ -31,6 +33,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
         attachAddToCartListeners();
     }
+
+    // Function to attach event listeners to "Add to Basket" buttons
+    function attachAddToCartListeners() {
+        document.querySelectorAll(".store__add-to-cart").forEach(button => {
+            button.addEventListener("click", function() {
+                const productElement = this.parentElement;
+                const productId = productElement.getAttribute("data-id");
+                const productName = productElement.querySelector(".store__product-name").textContent;
+                const productPrice = parseFloat(productElement.querySelector(".store__product-price").textContent.replace('$', ''));
+                const productImage = productElement.querySelector(".store__product-image").src;
+
+                const existingProduct = cart.find(item => item.id === productId);
+
+                if (existingProduct) {
+                    existingProduct.quantity++;
+                } else {
+                    const product = {
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    };
+                    cart.push(product);
+                }
+
+                updateCart();
+                showToast(`${productName} added to basket`, 'success');
+            });
+        });
+    }
+
+
 
     // Initial render and update
     renderProducts(products);
