@@ -65,6 +65,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Function to show toast notifications
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `toast toast --${type} toast--visible`;
+        toast.textContent = message;
+
+        toastContainer.appendChild(toast);
+
+        // Remove toast after a few seconds
+        setTimeout(() => {
+            toast.classList.remove('toast--visible');
+            toast.addEventListener('transitioned', () => toast.remove());
+        }, 3000);
+
+    }
 
 
     // Initial render and update
