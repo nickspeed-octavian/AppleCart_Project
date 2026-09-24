@@ -65,6 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
+    // Function to update the cart in localStorage and update the checkout count
+    function updateCart() {
+        localStorage.setItem('cart',JSON.stringify(cart)); // Save the cart to localStorage
+        checkoutCountElement.textContent = cart.reduce((acc, item) => acc + item.quantity, 0); // Update cart count
+        updateCartPreview(); // Update the mini-cart preview
+    }
+
     // Function to show toast notifications
     function showToast(message, type) {
         const toast = document.createElement('div');
