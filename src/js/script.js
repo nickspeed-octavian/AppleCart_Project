@@ -73,6 +73,60 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCartPreview(); // Update the mini-cart preview
     }
 
+    // Function to actually update the mini-basket preview pop-up div
+    function updateCartPreview() {
+        cartItemsElement.innerHTML = ''; // Clear existing items
+        let total = 0; // Set as let to allow for value to change as items are added and removed from cart
+
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.classList.add('header__cart-item');
+            li.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="header__cart-item-image">
+                <span class="header__cart-item-name">${item.name}</span>
+                <span class="header__cart-item-quantity">x${item.quantity}</span>
+                <span class="header__cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                <button class="header__cart-item-increase">+</button>
+                <button class="header__cart-item-decrease">-</button>
+                <button class="header__cart-item-remove">X</button>
+            `;
+
+            // Event listener to increase quantity
+            li.querySelector('.header__cart-item-increase').addEventListener('click', () => {
+                item.quantity++;
+                updateCart();
+            })
+
+            // Event listener to decrease quantity to 1, or removing it if quantity reaches 0
+            li.querySelector('header__cart-item-decrease').addEventListener('click', () => {
+                if(item.quantity > 1) {
+                    item.quantity--; // decrease quantity if greater than 1
+                } else {
+                    cart.splice(index, 1); // Remove item if quantity is 0
+                }
+            })
+
+            // Event listener to remove item from cart
+            li.querySelector('.header__cart-item-remove').addEventListener('click', () => {
+                cart.splice(index, 1);
+                showToast(`${item.name} removed from basket`, 'error');
+                updateCart();
+            })
+
+            cartItemsElement.appendChild(li);
+            total += item.price *item.quantity;
+        });
+
+        cartTotalElement.textContent = total.toFixed(2);
+    }
+
+    // Function to clear the basket
+    function clearCart() {
+        cart = [];
+        updateCart();
+        showToast(`Cleared entire basket`, 'error');
+    }
+
     // Function to show toast notifications
     function showToast(message, type) {
         const toast = document.createElement('div');
