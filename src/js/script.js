@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="${product.image}" alt="${product.name}" class="store__product-image">
                 <h2 class="store__product-name">${product.name}</h2>
                 <p class="store__product-price">$${product.price.toFixed(2)}</p>
-                <p class="store__product-description>${product.description}</p>
+                <p class="store__product-description">${product.description}</p>
                 <button class="store__add-to-cart">Add to Basket</button>
             `;
 
