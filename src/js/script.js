@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to show toast notifications
     function showToast(message, type) {
         const toast = document.createElement('div');
-        toast.className = `toast toast --${type} toast--visible`;
+        toast.className = `toast toast--${type} toast--visible`;
         toast.textContent = message;
 
         toastContainer.appendChild(toast);
