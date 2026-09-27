@@ -164,4 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial render and update
     renderProducts(products);
+    updateCart();
+
+    // Handle clicking on the "Clear Cart" button
+    document.querySelector('.header__clear-cart-button').addEventListener('click', clearCart);
+
+    // Handle clicking on the "View Cart" button
+    document.querySelector('.header)__view-cart-button').addEventListener('click', function() {
+        console.log('View Cart clicked:', cart);
+    })
 });
