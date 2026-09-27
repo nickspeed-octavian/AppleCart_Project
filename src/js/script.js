@@ -143,6 +143,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    // Show cart preview on hover
+    const checkoutLink = document.querySelector('.header__checkout-link');
+
+    cartPreviewElement.addEventListener('mouseenter',() => {
+        cartPreviewElement.style.display = 'flex';
+    });
+
+    checkoutLink.addEventListener('mouseenter',() => {
+        cartPreviewElement.style.display = 'flex';
+    });
+
+    cartPreviewElement.addEventListener('mouseleave', () => {
+        cartPreviewElement.style.display = 'none';
+    });
+
+    checkoutLink.addEventListener('mouseleave',() => {
+        cartPreviewElement.style.display = 'none';
+    });
 
     // Initial render and update
     renderProducts(products);
