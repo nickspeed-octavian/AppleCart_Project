@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     cart.splice(index, 1); // Remove item if quantity is 0
                 }
+                updateCart()
             })
 
             // Event listener to remove item from cart
