@@ -1,11 +1,11 @@
 import { products } from '../data/products.js';
 document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem('cart')) || []; // Saves cart to user's browser
-    
+
     const checkoutCountElement = document.querySelector('.header__checkout-count');
     const cartPreviewElement = document.querySelector(".header__cart-preview");
     const cartItemsElement = document.querySelector(".header__cart-items");
-    const cartTotalElement = document.querySelector("header__cart-total-amount");
+    const cartTotalElement = document.querySelector(".header__cart-total-amount");
     const productListElement = document.querySelector(".store__product-list");
     const toastContainer = document.querySelector(".toast-container");
 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
 
             // Event listener to decrease quantity to 1, or removing it if quantity reaches 0
-            li.querySelector('header__cart-item-decrease').addEventListener('click', () => {
+            li.querySelector('.header__cart-item-decrease').addEventListener('click', () => {
                 if(item.quantity > 1) {
                     item.quantity--; // decrease quantity if greater than 1
                 } else {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Remove toast after a few seconds
         setTimeout(() => {
             toast.classList.remove('toast--visible');
-            toast.addEventListener('transitioned', () => toast.remove());
+            toast.addEventListener('transitionend', () => toast.remove());
         }, 3000);
 
     }
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.header__clear-cart-button').addEventListener('click', clearCart);
 
     // Handle clicking on the "View Cart" button
-    document.querySelector('.header)__view-cart-button').addEventListener('click', function() {
+    document.querySelector('.header__view-cart-button').addEventListener('click', function() {
         console.log('View Cart clicked:', cart);
     })
 });
